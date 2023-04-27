@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.Catflix" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">#f25a5a</item>
+    </style>
+</resources>
