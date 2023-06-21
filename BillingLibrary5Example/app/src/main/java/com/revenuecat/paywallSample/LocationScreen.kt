@@ -51,9 +51,9 @@ fun LocationOfferScreen(onClick: () -> Unit) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     var location by remember { mutableStateOf<Location?>(null) }
-    val androidMakersLocation = Location(LocationManager.GPS_PROVIDER).apply {
-        latitude = 48.81945091444728
-        longitude = 2.319694253379477
+    val conference = Location(LocationManager.GPS_PROVIDER).apply {
+        latitude = 37.768056932427534
+        longitude = -122.39313932239476
     }
 
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -91,12 +91,12 @@ fun LocationOfferScreen(onClick: () -> Unit) {
                         permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
                     }
                 }) {
-                Text("Are you at AndroidMakers? 👀")
+                Text("Are you at droidcon SF? 👀")
             }
         }
 
         location?.let {
-            if (it.distanceTo(androidMakersLocation) < 1000) {
+            if (it.distanceTo(conference) < 1000) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(8.dp))
@@ -109,17 +109,17 @@ fun LocationOfferScreen(onClick: () -> Unit) {
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.androidmakers),
-                            contentDescription = "androidmakers logo",
+                            painter = painterResource(id = R.drawable.droidconsf),
+                            contentDescription = "logo",
                             modifier = Modifier
                                 .height(100.dp)
-                                .background(Color.White.copy(0.5f), RoundedCornerShape(8.dp))
-                                .padding(16.dp)
-
+                                .background(Color.White, RoundedCornerShape(8.dp))
+                                .padding(10.dp)
+                                .clip(RoundedCornerShape(8.dp))
                         )
                         Column {
                             Text(
-                                text = "You're at AndroidMakers! 📍",
+                                text = "You're at droidcon SF!",
                                 style = MaterialTheme.typography.h6,
                                 textAlign = TextAlign.Start,
                                 color = Color.White,
