@@ -52,8 +52,8 @@ fun LocationOfferScreen(onClick: () -> Unit) {
     val coroutineScope = rememberCoroutineScope()
     var location by remember { mutableStateOf<Location?>(null) }
     val conference = Location(LocationManager.GPS_PROVIDER).apply {
-        latitude = 37.768056932427534
-        longitude = -122.39313932239476
+        latitude = 52.500182
+        longitude = 13.271062
     }
 
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -91,7 +91,7 @@ fun LocationOfferScreen(onClick: () -> Unit) {
                         permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
                     }
                 }) {
-                Text("Are you at droidcon SF? 👀")
+                Text("Are you at droidcon Berlin? 👀")
             }
         }
 
